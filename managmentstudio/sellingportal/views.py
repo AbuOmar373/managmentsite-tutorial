@@ -21,4 +21,8 @@ def Student(request):
 
 
 def StudenDegree(request,student_id):
-    return HttpResponse('welcome to Degree page you id:'+ student_id)
+    degrees = models.Degree.objects.filter(student_id=student_id)
+    context = {
+        'degrees': degrees
+    }
+    return render(request, 'degrees.html', context)
